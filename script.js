@@ -77,7 +77,6 @@ function populateTable(data) {
     });
 }
 
-
 // Function to process the uploaded file and extract the year
 function processFile() {
     const fileInput = document.getElementById('fileInput');
@@ -178,15 +177,15 @@ function displayResults() {
     const selectedMonthIndex = parseInt(monthSelect.value);
 
     if (selectedMonthIndex >= 0 && selectedMonthIndex < forecastItem1.length) {
-        const forecastIndex = selectedMonthIndex +1; // Adjust index for forecast
+        const forecastIndex = selectedMonthIndex; // Adjust index for forecast
 
         if (forecastIndex >= 0) {
-            const monthlyMAPEItem1 = calculateMonthlyMAPE(item1, forecastItem1, forecastIndex -1);
-            const monthlyMAPEItem2 = calculateMonthlyMAPE(item2, forecastItem2, forecastIndex-1);
+            const monthlyMAPEItem1 = calculateMonthlyMAPE(item1, forecastItem1, forecastIndex);
+            const monthlyMAPEItem2 = calculateMonthlyMAPE(item2, forecastItem2, forecastIndex);
 
             output.innerHTML = `
-                <p>Peramalan <strong>Kedelai:</strong> ${forecastItem1[forecastIndex].toFixed(2)} kg</p>
-                <p>Peramalan <strong>Ragi:</strong> ${forecastItem2[forecastIndex].toFixed(2)} gram</p>
+                <p>Peramalan <strong>Pakan Ikan:</strong> ${forecastItem1[forecastIndex].toFixed(2)} kg</p>
+                <p>Peramalan <strong>Batu Hias:</strong> ${forecastItem2[forecastIndex].toFixed(2)} Kg</p>
             `;
             errorOutput.innerHTML = `
                 <p><strong>MAPE</strong> Pakan Ikan: ${monthlyMAPEItem1 !== null ? monthlyMAPEItem1.toFixed(2) : "N/A"}%</p>
