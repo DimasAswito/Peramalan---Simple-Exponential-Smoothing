@@ -10,11 +10,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.umd.min.js"></script>
   <style>
     .custom-card {
-      background-color: #f8f9fa;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      margin-top: 50px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
     }
 
     html {
@@ -62,25 +61,26 @@
       <h4 class="text-center">Upload File</h4>
       <label for="fileInput" class="form-label">Upload Excel/CSV File</label>
       <input class="form-control" type="file" id="fileInput" accept=".csv, .xlsx">
+
+      <div class="mt-3">
+        <label for="alphaInput" class="form-label">Masukkan Nilai Alpha</label>
+        <input type="number" class="form-control" id="alphaInput" step="0.01" min="0" max="1"
+          placeholder="Nilai Alpha (0-1)" value="0.1">
+      </div>
+
       <button class="btn btn-primary mt-3" onclick="processFile()">Proses file</button>
     </div>
 
-    <div class="mt-3">
-     <label for="alphaInput" class="form-label">Masukkan Nilai Alpha</label>
-     <input type="number" class="form-control" id="alphaInput" step="0.01" min="0" max="1" placeholder="Nilai Alpha (0-1)" value="0.98">
-   </div>
- 
-
- <!-- Chart Section -->
+    <!-- Chart Section -->
     <div id="chartSection" class="custom-card bg-body-secondary">
       <h4 class="text-center">Grafik</h4>
       <canvas id="stockChart"></canvas> <!-- Canvas for Chart.js -->
     </div>
 
     <!-- Table Section -->
-    <div id="tableSection" class="custom-card bg-body-secondary">
+    <div id="dataTable" class="custom-card bg-body-secondary">
       <h4 class="text-center">Tabel</h4>
-      <table class="table table-bordered" id="uploadedDataTable">
+      <table class="table table-bordered text-center" id="uploadedDataTable">
         <thead>
           <tr>
             <th>Bulan</th>
@@ -95,8 +95,9 @@
     </div>
 
     <!-- Output Section -->
-    <div id="outputSection" class="row justify-content-center gap-md-5"> <!-- Tambahkan kelas g-3 untuk gutter -->
-      <div class="custom-card bg-body-secondary col-md-6">
+    <div id="outputSection" class="row justify-content-center gap-3"> 
+      <!-- Kotak 1: Hasil Peramalan -->
+      <div class="custom-card bg-body-secondary col-md-4 col-sm-12 mb-3">
         <h4 class="text-center">Hasil Peramalan</h4>
         <div class="mb-3">
           <label for="monthSelect" class="form-label">Pilih Bulan</label>
@@ -107,16 +108,30 @@
         </div>
         <div id="output" class="text-center"></div>
       </div>
-
-      <div class="custom-card bg-body-secondary col-md-5">
-        <h4 class="text-center">Persentase Error (MAPE)</h4>
-        <div id="errorOutput" class="text-center mt-5"></div> <!-- Output for MAPE will be shown here -->
+    
+      <!-- Kotak 2: Persentase Error Bulanan -->
+      <div class="custom-card bg-body-secondary col-md-3 col-sm-12 mb-3">
+        <h4 class="text-center">Persentase Error Bulanan</h4>
+        <div id="errorOutput" class="text-center mt-5"></div>
+      </div>
+    
+      <!-- Kotak 3: MAPE -->
+      <div class="custom-card bg-body-secondary col-md-4 col-sm-12 mb-3">
+        <h4 class="text-center">(MAPE)</h4>
+        <div id="outputmape" class="text-center mt-5"></div>
       </div>
     </div>
-  </div>
+    
 
-  <button style="margin-left: 50%; background-color:  #28a745; color: rgb(255, 255, 255); padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;" 
-id="refreshButton" onclick="refreshPage()">Clear</button>
+  </div>
+    
+
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <button
+        style="background-color:#28a745; color: rgb(255, 255, 255); padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;"
+        id="refreshButton" onclick="refreshPage()">Bersihkan Data</button>
+</div>
+
 
   <!-- Footer -->
   <footer class="bg-dark text-center text-lg-start mt-5">
