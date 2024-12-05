@@ -34,21 +34,21 @@ let chart;
                     ],
                     datasets: [
                         {
-                            label: 'Kedelai',
+                            label: 'Pakan Ikan',
                             data: Array(13).fill(null),
                             borderColor: 'rgba(255, 165, 0, 1)',
                             borderWidth: 2,
                             fill: false,
                         },
                         {
-                            label: 'Ragi',
+                            label: 'Batu Hias',
                             data: Array(13).fill(null),
                             borderColor: 'rgba(0, 0, 128, 1)',
                             borderWidth: 2,
                             fill: false,
                         },
                         {
-                            label: 'Peramalan Kedelai',
+                            label: 'Peramalan Pakan Ikan',
                             data: Array(13).fill(null),
                             borderColor: 'rgba(255, 165, 0, 0.5)',
                             borderWidth: 2,
@@ -56,7 +56,7 @@ let chart;
                             fill: false,
                         },
                         {
-                            label: 'Peramalan Ragi',
+                            label: 'Peramalan Batu Hias',
                             data: Array(13).fill(null),
                             borderColor: 'rgba(0, 0, 128, 0.5)',
                             borderWidth: 2,
@@ -256,7 +256,7 @@ let chart;
 
                 output.innerHTML = `
                     <p>Peramalan <strong>Pakan Ikan:</strong> ${forecastItem1[forecastIndex].toFixed(2)} kg</p>
-                    <p>Peramalan <strong>Batu Hias:</strong> ${forecastItem2[forecastIndex].toFixed(2)} gram</p>
+                    <p>Peramalan <strong>Batu Hias:</strong> ${forecastItem2[forecastIndex].toFixed(2)} Kg</p>
                 `;
                 errorOutput.innerHTML = `
                     <p><strong>Pakan Ikan</strong> Eror: ${monthlyerorItem1 !== null ? monthlyerorItem1.toFixed(2) : "N/A"}%</p>
